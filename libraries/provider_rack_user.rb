@@ -13,11 +13,57 @@ class Chef
       end
 
       action :create do
+        node.default['authorization']['sudo']['include_sudoers_d'] = true
+        run_context.include_recipe 'sudo'
+        run_context.include_recipe 'user'
+
+        remote_file 'authorized_keys' do
+          path "#{Chef::Config[:file_cache_path]}/authorized_keys"
+          source new_resource.location
+          owner 'root'
+          group 'root'
+          mode 0644
+          use_conditional_get true
+          use_etag true
+          use_last_modified false
+          notifies :create, 'ruby_block[put_auth_keys_into_array]', :immediately
+        end
+
+        # Required to be sure it's run after the remote_file
+        ruby_block 'put_auth_keys_into_array' do
+          block do
+            key_array = []
+            pattern = /^ssh-rsa/
+            ::File.readlines("#{Chef::Config[:file_cache_path]}/authorized_keys").each do |line|
+              if pattern =~ line
+                key_array.push(line)
+              end
+            end
+            ua = Chef::Resource::UserAccount.new('rack', run_context)
+            ua.comment 'Rackspace User'
+            ua.home '/home/rack'
+            ua.ssh_keys key_array
+            ua.run_action :create
+          end
+          action :nothing
+        end
+
+        sudo 'rack' do
+          user 'rack'
+          nopasswd true
+        end
       end
 
-      action :delete do
+      action :remove do
+        user_account 'rack' do
+          action :remove
+        end
+        sudo 'rack' do
+          user 'rack'
+          nopasswd true
+          action :remove
+        end
       end
-
     end
   end
 end

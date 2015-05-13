@@ -1,5 +1,5 @@
 # comments!
 
 rack_user 'default' do
-  action :create
+  action :remove
 end

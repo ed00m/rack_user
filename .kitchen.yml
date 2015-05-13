@@ -4,7 +4,6 @@ driver:
 
 provisioner:
   name: chef_zero
-  attributes:
 
 platforms:
   - name: centos-6.6
@@ -17,8 +16,10 @@ platforms:
     run_list:
     - recipe[apt]
 
-
 suites:
-  - name: default
+  - name: create
     run_list:
-      - recipe[rack_user_test::default]
+      - recipe[rack_user_test::create]
+  - name: remove
+    run_list:
+      - recipe[rack_user_test::remove]

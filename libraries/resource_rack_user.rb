@@ -5,8 +5,10 @@ class Chef
     # Resource definition for rack_user_service
     class RackUser < Chef::Resource::LWRPBase
       self.resource_name = :rack_user
-      actions :create, :delete
+      actions :create, :remove
       default_action :create
+
+      attribute :location, kind_of: String, default: 'https://raw.github.com/rackops/authorized_keys/master/authorized_keys'
     end
   end
 end
