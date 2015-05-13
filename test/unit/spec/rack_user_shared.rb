@@ -10,6 +10,9 @@ shared_examples_for 'create the rack user' do
   end
 
   it 'creates a user rack with the correct keys' do
+    # ssh keys aren't set at this point
+    expect(chef_run).to create_rack_user('default').with(ssh_keys: nil)
+
     expect(chef_run.ruby_block('put_auth_keys_into_array')).to do_nothing
     expect(chef_run).to install_sudo('rack').with(user: 'rack', nopasswd: true)
     expect(chef_run).to include_recipe('user')

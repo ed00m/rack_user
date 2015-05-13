@@ -39,11 +39,12 @@ class Chef
                 key_array.push(line)
               end
             end
-            ua = Chef::Resource::UserAccount.new('rack', run_context)
-            ua.comment 'Rackspace User'
-            ua.home '/home/rack'
-            ua.ssh_keys key_array
-            ua.run_action :create
+            user_account 'rack' do
+              comment 'Rackspace User'
+              home '/home/rack'
+              ssh_keys key_array
+              action :create
+            end
           end
           action :nothing
         end
