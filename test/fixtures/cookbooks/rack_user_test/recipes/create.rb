@@ -1,6 +1,6 @@
 # comments!
 
 rack_user 'default' do
-  location 'https://gist.githubusercontent.com/jujugrrr/af613872c3d029a94c88/raw/1d57582215ac6316f55b956691db1dba8339fcdd/test'
+  location 'https://gist.githubusercontent.com/jujugrrr/6b8b892d8486b12ad8b9/raw/53423cfffa0ad90e7bc8a050feaf3e0c7109f03e/gistfile1.txt'
   action :create
 end
