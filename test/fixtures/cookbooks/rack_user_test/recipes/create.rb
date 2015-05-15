@@ -1,6 +1,6 @@
 # comments!
 
 rack_user 'default' do
-  location 'https://gist.githubusercontent.com/martinb3/14595e35648f5a822073/raw/133f3a3cf0bd96f4008fb16a7d4dc2322f4f2a5a/test-authorized-keys'
+  location 'https://gist.githubusercontent.com/jujugrrr/6b8b892d8486b12ad8b9/raw/53423cfffa0ad90e7bc8a050feaf3e0c7109f03e/gistfile1.txt'
   action :create
 end
