@@ -17,7 +17,7 @@ platforms:
     - recipe[apt]
 
 suites:
-  - name: create
+  - name: default
     run_list:
       - recipe[rack_user_test::create]
   - name: remove

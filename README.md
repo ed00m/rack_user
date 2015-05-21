@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/rackspace-cookbooks/rack_user.svg?style=svg)](https://circleci.com/gh/rackspace-cookbooks/rack_user)
+
 # rack_user-cookbook
 
 The Rackspace rack_user cookbook provides resource primitives (LWRPs) for use in recipes.
@@ -42,7 +44,7 @@ The `rack_user` resource creates a `rack` user with a list of authorized keys.
 #### Create the user with an authorized key file from a gist
 ```
 rack_user 'default' do
-  location 'https://gist.githubusercontent.com/jujugrrr/af613872c3d029a94c88/raw/1d57582215ac6316f55b956691db1dba8339fcdd/test'
+  location 'https://gist.githubusercontent.com/dummy_user/af613872c3d029a94c88/raw/1d57582215ac6316f55b956691db1dba8339fcdd/test'
 end
 ```
 #### Remove the user
