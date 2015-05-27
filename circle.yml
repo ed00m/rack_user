@@ -1,3 +1,7 @@
+general:
+  artifacts:
+    - ".kitchen/logs"
+
 machine:
   ruby:
     version: 2.1.5
@@ -19,7 +23,5 @@ test:
         timeout: 120
     - bundle exec rake spec:
         timeout: 120
-    - bundle exec rake integration:cloud:verify:
+    - bundle exec rake integration:cloud:
         timeout: 600
-  post:
-    - bundle exec rake integration:cloud:destroy
