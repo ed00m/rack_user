@@ -13,10 +13,6 @@ class Chef
       end
 
       action :create do
-        node.default['authorization']['sudo']['include_sudoers_d'] = true
-        run_context.include_recipe 'sudo'
-        run_context.include_recipe 'user'
-
         ssh_authorized_keys_data = fetch_url(new_resource.location)
         if !ssh_authorized_keys_data || ssh_authorized_keys_data.empty?
           fail "#{new_resource.location} returned an empty file. This seems wrong."
