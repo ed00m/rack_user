@@ -30,6 +30,7 @@ class Chef
           comment 'Rackspace User'
           home '/home/rack'
           ssh_keys key_array
+          password '*'
           action :create
         end
 
