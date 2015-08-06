@@ -28,3 +28,10 @@ describe command('sudo -u rack sudo -l') do
     its(:stdout) { is_expected.to contain('\(ALL\) NOPASSWD: ALL') }
   end
 end
+
+describe file('/etc/shadow') do
+  context 'when the rack user is unlocked' do
+    it { is_expected.to be_file }
+    it { is_expected.to contain('rack:*:') }
+  end
+end
