@@ -1,6 +1,12 @@
 rack_user CHANGELOG
 ==================
 
+0.1.1
+-----
+
+Allow ssh nopassword to not lock rack user. It allows to ssh as rack even when UsePAM no is set
+http://arlimus.github.io/articles/usepam/
+
 0.1.0
 -----
 
