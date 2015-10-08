@@ -1,6 +1,12 @@
 rack_user CHANGELOG
 ==================
 
+0.2.0
+-----
+
+Adding support for external password creation.
+Updating existing remove tests.
+
 0.1.1
 -----
 
@@ -18,4 +24,4 @@ Allow for redirects on `location` parameter to resource.
 
 0.0.1
 -----
-Initial release. 
+Initial release.
