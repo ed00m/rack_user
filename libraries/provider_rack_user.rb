@@ -1,4 +1,5 @@
 require 'chef/resource/lwrp_base'
+require 'shadow'
 
 class Chef
   class Provider
@@ -26,11 +27,21 @@ class Chef
           end
         end
 
+        # password should be '*' unless passwd_enable is set
+        # in which case, check the shadow file
+        rack_password = '*'
+        if new_resource.passwd_enable
+          shadow_password = ::Shadow::Passwd.getspnam('rack').sp_pwdp
+          if shadow_password
+            rack_password = shadow_password
+          end
+        end
+
         user_account 'rack' do
           comment 'Rackspace User'
           home '/home/rack'
           ssh_keys key_array
-          password '*'
+          password rack_password
           action :create
         end
 
