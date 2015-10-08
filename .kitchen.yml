@@ -20,6 +20,9 @@ suites:
   - name: default
     run_list:
       - recipe[rack_user_test::create]
+  - name: create_with_password
+    run_list:
+      - recipe[rack_user_test::create_with_password]
   - name: remove
     run_list:
       - recipe[rack_user_test::remove]
