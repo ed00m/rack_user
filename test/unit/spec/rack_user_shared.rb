@@ -19,7 +19,7 @@ end
 
 shared_examples_for 'remove the rack user' do
   it 'creates a rack user' do
-    expect(chef_run).to create_user('rack').with(password: '*')
+    expect(chef_run).to create_rack_user('default')
   end
   it 'removes the rack user' do
     expect(chef_run).to remove_user_account('rack')
