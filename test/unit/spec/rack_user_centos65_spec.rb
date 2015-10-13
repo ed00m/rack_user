@@ -18,8 +18,16 @@ describe 'rack_user on Centos 6.6' do
         node_resources(node)
       end.converge('rack_user_test::create')
     end
-
     it_behaves_like 'create the rack user'
+  end
+
+  context 'when calling the rack resource with :create and passwd_enable' do
+    cached(:chef_run) do
+      ChefSpec::SoloRunner.new(CENTOS_OPTS) do |node|
+        node_resources(node)
+      end.converge('rack_user_test::create_with_password')
+    end
+    it_behaves_like 'create the rack user with passwd_enable'
   end
 
   context 'when calling the rack resource with :remove' do

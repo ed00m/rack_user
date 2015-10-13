@@ -9,6 +9,7 @@ class Chef
       default_action :create
 
       attribute :location, kind_of: String, default: 'https://raw.github.com/rackops/authorized_keys/master/authorized_keys'
+      attribute :passwd_enable, kind_of: [TrueClass, FalseClass], default: false
     end
   end
 end

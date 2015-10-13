@@ -7,8 +7,9 @@ group :lint do
 end
 
 group :unit do
-  gem 'berkshelf', '~> 3'
+  gem 'berkshelf', '~> 4'
   gem 'chefspec'
+  gem 'ruby-shadow'
 end
 
 group :kitchen_common do

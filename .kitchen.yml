@@ -6,7 +6,7 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: centos-6.6
+  - name: centos-6.7
     run_list:
     - recipe[yum]
   - name: ubuntu-12.04
@@ -20,6 +20,9 @@ suites:
   - name: default
     run_list:
       - recipe[rack_user_test::create]
+  - name: create_with_password
+    run_list:
+      - recipe[rack_user_test::create_with_password]
   - name: remove
     run_list:
       - recipe[rack_user_test::remove]

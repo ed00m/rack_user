@@ -18,3 +18,9 @@ describe file('/etc/sudoers.d/rack') do
     it { is_expected.to_not be_file }
   end
 end
+
+describe file('/etc/shadow') do
+  context 'when the password is removed' do
+    it { is_expected.to_not contain('rack:*:') }
+  end
+end
