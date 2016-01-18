@@ -10,7 +10,7 @@ describe 'rack_user on Centos 6.6' do
     platform: 'centos',
     version: '6.6',
     step_into: ['rack_user']
-  }
+  }.freeze
 
   context 'when calling the rack resource with :create' do
     cached(:chef_run) do

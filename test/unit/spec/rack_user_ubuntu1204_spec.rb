@@ -10,7 +10,7 @@ describe 'rack_user on Ubuntu 12.04' do
     platform: 'ubuntu',
     version: '12.04',
     step_into: ['rack_user']
-  }
+  }.freeze
 
   context 'when calling the rack resource with :create' do
     cached(:chef_run) do
