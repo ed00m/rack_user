@@ -16,7 +16,7 @@ class Chef
       action :create do
         ssh_authorized_keys_data = fetch_url(new_resource.location)
         if !ssh_authorized_keys_data || ssh_authorized_keys_data.empty?
-          fail "#{new_resource.location} returned an empty file. This seems wrong."
+          raise "#{new_resource.location} returned an empty file. This seems wrong."
         end
 
         key_array = []
